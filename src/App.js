@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
   state = {
@@ -17,9 +17,12 @@ class App extends Component {
   }
 
   generateQuote = () => {
-    this.setState({
-      quote: "I'm the second quote",
-    })
+    axios.get("http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote")
+      .then((response) => {
+        this.setState({
+          quote: response.data.starWarsQuote,
+        })
+      })
   }
 }
 
