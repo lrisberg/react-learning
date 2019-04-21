@@ -3,25 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    quote: "I'm the first quote",
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <p className="StarWarsQuote">{this.state.quote}</p>
+        <button onClick={this.generateQuote}>Generate!</button>
       </div>
     );
+  }
+
+  generateQuote = () => {
+    this.setState({
+      quote: "I'm the second quote",
+    })
   }
 }
 
